@@ -6,6 +6,12 @@ headers=({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/53
 htmltext=requests.get(url,headers=headers).content
 soup=BeautifulSoup(htmltext,'lxml')
 links=soup.find_all("a",attrs={'class':"a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"})
-link=links[0].get('href')
-listi="https://amazon.in"+link
-print(listi)
+
+for i in links:
+      link=i.get('href')
+      listi="https://amazon.in"+link
+      small=requests.get(listi,headers=headers).text
+
+      soap=BeautifulSoup(small,'lxml')
+      linkedin=soap.find('div',class_="a-fixed-left-grid-col a-col-left")
+      print(linkedin.text.split()[1])
