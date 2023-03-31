@@ -11,5 +11,5 @@ for i in showName:
     ProductUrl.append(i.get('href'))
 
 #print(ProductUrl)
-for i in ProductUrl:
+for i in ProductUrl: 
     print(i)
